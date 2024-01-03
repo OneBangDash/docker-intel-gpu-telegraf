@@ -1,0 +1,18 @@
+name: publish
+on: [push]
+jobs:
+  publish-docker-intel-gpu-telegraf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build the docker-intel-gpu-telegraf Docker image
+        run: |
+          docker build . --tag ghcr.io/onebangdash/docker-intel-gpu-telegraf:latest
+          docker run ghcr.io/onebangdash/docker-intel-gpu-telegraf:latest
+          docker push ghcr.io/onebangdash/docker-intel-gpu-telegraf:latest
