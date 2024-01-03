@@ -14,7 +14,7 @@ jobs:
       - name: Log in to GitHub Docker Registry
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
-          registry: docker.pkg.github.com
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -24,4 +24,4 @@ jobs:
           context: .
           push: true
           tags: |
-            docker.pkg.github.com/onebangdash/docker-intel-gpu-telegraf:latest
+            ghcr.io/onebangdash/docker-intel-gpu-telegraf:latest
