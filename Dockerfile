@@ -1,6 +1,6 @@
 FROM fedora:latest
 
-LABEL maintainer=brian@phospher.com
+LABEL maintainer=onebangdash@gmail.com
 
 WORKDIR ./opt/intel-gpu-telegraf
 
