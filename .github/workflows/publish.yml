@@ -24,4 +24,4 @@ jobs:
           context: .
           push: true
           tags: |
-            docker.pkg.github.com/onebangdash/docker-intel-gpu-telegraf/docker-intel-gpu-telegraf:latest
+            docker.pkg.github.com/onebangdash/docker-intel-gpu-telegraf:latest
