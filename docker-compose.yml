@@ -1,0 +1,18 @@
+services:
+  intel-gpu-telegraf:
+    container_name: intel-gpu-telegraf
+    image: ghcr.io/onebangdash/docker-intel-gpu-telegraf:latest
+    tty: true
+    stdin_open: true
+    privileged: true # Must be priviliged to run intel_gpu_top
+    volumes:
+      - /etc/localtime:/etc/localtime:ro # Setup localtime within the container
+    devices:
+      - /dev/dri:/dev/dri # Provide the iGPU to the container
+    environment:
+      - telegraf_hostname=YOUR_TELEGRAF_HOSTNAME # Hostname of the machine where stats are being collected
+      - influx_url=YOUR_INFLUX_URL # URL of influxDB example: http://influxdb2:8086
+      - influx_org=YOUR_ORGANIZATION # InfluxDB Organization name
+      - influx_bucket=YOUR_BUCKET # InfluxDB Bucket name
+      - influx_token=YOUR_TOKEN # InfluxDB token
+    restart: unless-stopped
