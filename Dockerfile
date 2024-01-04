@@ -4,7 +4,7 @@ LABEL maintainer=onebangdash@gmail.com
 
 WORKDIR ./opt/intel-gpu-telegraf
 RUN echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-RUN apk add --no-cache curl gpg telegraf igt-gpu-tools@testing net-tools vim jq tzdata
+RUN apk add --no-cache curl gpg telegraf igt-gpu-tools@testing net-tools vim tzdata
 
 RUN rm -rf /var/cache/*
 
