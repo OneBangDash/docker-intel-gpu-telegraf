@@ -1,4 +1,4 @@
-FROM fedora:latest
+FROM alpine:latest
 
 LABEL maintainer=onebangdash@gmail.com
 
