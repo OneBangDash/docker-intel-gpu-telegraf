@@ -1,18 +1,11 @@
-FROM ubuntu:latest
+FROM alpine:latest
 
 LABEL maintainer=onebangdash@gmail.com
 
 WORKDIR ./opt/intel-gpu-telegraf
+RUN echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN apk add --no-cache curl gpg telegraf igt-gpu-tools@testing net-tools vim
 
-RUN \
- echo "[influxdb]" > /etc/yum.repos.d/influxdb.repo && \
- echo "name=InfluxDB Repository - RHEL" >> /etc/yum.repos.d/influxdb.repo && \
- echo "baseurl=https://repos.influxdata.com/rhel/7/x86_64/stable/" >> /etc/yum.repos.d/influxdb.repo && \
- echo "enabled=1" >> /etc/yum.repos.d/influxdb.repo && \
- echo "gpgcheck=1" >> /etc/yum.repos.d/influxdb.repo && \
- echo "gpgkey=https://repos.influxdata.com/influxdata-archive_compat.key" >> /etc/yum.repos.d/influxdb.repo
-
-RUN dnf install -y igt-gpu-tools telegraf iputils net-tools vim-enhanced
 RUN rm -rf /var/cache/*
 
 COPY ./opt/intel-gpu-telegraf /opt/intel-gpu-telegraf
